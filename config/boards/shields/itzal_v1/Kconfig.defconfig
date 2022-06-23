@@ -1,0 +1,9 @@
+# Copyright (c) 2020 The ZMK Contributors
+# SPDX-License-Identifier: MIT
+
+if SHIELD_ITZAL_V1
+
+config ZMK_KEYBOARD_NAME
+	default "Itzal_v1"
+
+endif

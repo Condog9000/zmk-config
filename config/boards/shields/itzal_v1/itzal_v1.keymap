@@ -1,0 +1,47 @@
+/*
+ * Copyright (c) 2020 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+#include <behaviors.dtsi>
+#include <dt-binding/zmk/keys.h>
+#include <dt-binding/zmk/bt.h>
+
+#define DEFAULT 0
+#define BT 1
+
+/ {
+	keymap {
+		compatible = "zmk,keymap";
+
+		default_layer {
+// -------------------------
+// | NLK |  /  |  *  |  -  |
+// |  7  |  8  |  9  |     |
+// |  4  |  5  |  6  |  +  |
+// |  1  |  2  |  3  |     |
+// |     0     |  .  | Ent |
+            bindings = <
+&lt BT_L KP_NLCK  &kp KP_DIVIDE  &kp KP_MULTIPLY  &kp KP_MINUS
+&kp KP_N7    &kp KP_N8      &kp KP_N9
+&kp KP_N4    &kp KP_N5      &kp KP_N6        &kp KP_PLUS
+&kp KP_N1    &kp KP_N2      &kp KP_N3        &none
+      &kp KP_N0           &kp KP_DOT         &kp KP_ENTER
+            >;
+    sensor-bindings = <&inc_dec_kp &none &none>;
+                };
+
+        bluetooth_layer {
+        	label = "Bluetooth";
+        	bindings = <
+&none  &none  &none         &bt BT_CLR
+&none  &none  &bt BT_SEL 0
+&none  &none  &bt BT_SEL 1  &none
+&none  &none  &bt BT_SEL 2  &none
+ &kp KP_NLC   &none         &none
+ 			>;
+ 	sensor-bindings = <&inc_dec_kp BT_NXT BT_PRV>;
+        		;}
+	}
+}
